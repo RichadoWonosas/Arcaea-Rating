@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "FOT-Skip";
+    src: url("fonts/FOT-SkipStd-L.otf");
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "FOT-Skip";
+    src: url("fonts/FOT-SkipStd-M.otf");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "FOT-Skip";
+    src: url("fonts/FOT-SkipStd-D.otf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "FOT-Skip";
+    src: url("fonts/FOT-SkipStd-B.otf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "FOT-Skip";
+    src: url("fonts/FOT-SkipStd-E.otf");
+    font-weight: 900;
+}
+
+html {
+    font-family: "FOT-Skip", "Serif";
+}
