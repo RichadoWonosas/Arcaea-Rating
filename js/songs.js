@@ -31,6 +31,14 @@ class songFrame extends HTMLElement {
         let imageCol = document.createElement("td");
         imageCol.setAttribute("colspan", "4");
 
+        let coverLink = document.createElement("a");
+        coverLink.setAttribute("class", "link");
+        coverLink.setAttribute("target", "_blank");
+        if (this.hasAttribute("href"))
+            coverLink.setAttribute("href", this.getAttribute("href"));
+        else if (this.hasAttribute("link"))
+            coverLink.setAttribute("href", this.getAttribute("link"));
+
         let cover = document.createElement("img");
         cover.setAttribute("class", "cover");
         if (this.hasAttribute("img"))
@@ -48,12 +56,20 @@ class songFrame extends HTMLElement {
         let titleCol = document.createElement("th");
         titleCol.setAttribute("colspan", "4");
         titleCol.setAttribute("class", "song_title");
+
+        let titleLink = document.createElement("a");
+        titleLink.setAttribute("class", "link");
+        titleLink.setAttribute("target", "_blank");
+        if (this.hasAttribute("href"))
+            titleLink.setAttribute("href", this.getAttribute("href"));
+        else if (this.hasAttribute("link"))
+            titleLink.setAttribute("href", this.getAttribute("link"));
         if (this.hasAttribute("song-title"))
-            titleCol.textContent = this.getAttribute("song-title");
+            titleLink.textContent = this.getAttribute("song-title");
         else if (this.hasAttribute("song"))
-            titleCol.textContent = this.getAttribute("song");
+            titleLink.textContent = this.getAttribute("song");
         else
-            titleCol.textContent = "Dummy";
+            titleLink.textContent = "Unknown Song";
 
         let diffRow = document.createElement("tr");
 
@@ -239,6 +255,10 @@ class songFrame extends HTMLElement {
         .cover_row {
             text-align: center;
         }
+        .link {
+            text-decoration: none;
+            color: inherit;
+        }
         .cover {
             width: 95%;
             position: center;
@@ -257,27 +277,39 @@ class songFrame extends HTMLElement {
             height: 0em;
         }
         .rating_row {
-            transition: all 0.6s;
+            transition-duration: 0.6s;
             transform: scale(1, 0);
             transform-origin: 50% 0%;
+
+            -o-transition-duration: 0.6s;
             -o-transform: scale(1, 0);
             -o-transform-origin: 50% 0%;
+
+            -ms-transition-duration: 0.6s;
             -ms-transform: scale(1, 0);
             -ms-transform-origin: 50% 0%;
+
+            -moz-transition-duration: 0.6s;
             -moz-transform: scale(1, 0);
             -moz-transform-origin: 50% 0%;
+
+            -webkit-transition-duration: 0.6s;
             -webkit-transform: scale(1, 0);
             -webkit-transform-origin: 50% 0%;
         }
         .main_frame:hover .rating_row, .main_frame:focus .rating_row {
             transform: scale(1, 1);
             transform-origin: 50% 0%;
+
             -o-transform: scale(1, 1);
             -o-transform-origin: 50% 0%;
+
             -ms-transform: scale(1, 1);
             -ms-transform-origin: 50% 0%;
+
             -moz-transform: scale(1, 1);
             -moz-transform-origin: 50% 0%;
+
             -webkit-transform: scale(1, 1);
             -webkit-transform-origin: 50% 0%;
         }
@@ -293,9 +325,11 @@ class songFrame extends HTMLElement {
         shadow.appendChild(mainFrame);
         mainFrame.appendChild(imageRow);
         imageRow.appendChild(imageCol);
-        imageCol.appendChild(cover);
+        imageCol.appendChild(coverLink);
+        coverLink.appendChild(cover);
         mainFrame.appendChild(titleRow);
         titleRow.appendChild(titleCol);
+        titleCol.appendChild(titleLink);
         mainFrame.appendChild(diffRow);
         diffRow.appendChild(diffType);
         diffRow.appendChild(diffRating);

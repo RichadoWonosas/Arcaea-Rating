@@ -67,7 +67,7 @@ function compareByArcRatingUp(element1, element2) {
 }
 
 function compareByTechRatingDown(element1, element2) {
-    if (element1.tech < element2.tech)
+    if (element1.techNum < element2.techNum)
         return 1;
     else if (element1.techNum > element2.techNum)
         return -1;
@@ -76,7 +76,7 @@ function compareByTechRatingDown(element1, element2) {
 }
 
 function compareByTechRatingUp(element1, element2) {
-    if (element1.tech > element2.tech)
+    if (element1.techNum > element2.techNum)
         return 1;
     else if (element1.techNum < element2.techNum)
         return -1;
@@ -106,8 +106,9 @@ function resort() {
     for (let i = 0; i < songs.length; i++) {
         songCol.innerHTML +=
             "<song-frame song=\"" + songs[i].song +
-            "\" cover=\"src/cover/" + songs[i].id +
-            ".jpg\" diff=\"" + songs[i].diff +
+            "\" cover=\"src/cover/" + songs[i].id + ".jpg" +
+            "\" href=\"https://wiki.arcaea.cn/index.php/" + songs[i].song +
+            "\" diff=\"" + songs[i].diff +
             "\" rating=\"" + songs[i].rating +
             "\" ptt=\"" + songs[i].ptt +
             "\" tap=\"" + songs[i].tap +
@@ -126,8 +127,8 @@ class songRatingTable extends HTMLElement {
         let style = document.createElement("style");
         style.textContent = `
         #diff_table {
-            position: 10% 0%;
             width: 80%;
+            background-color: rgba(255, 255, 255, 0.6);
         }
         .title-row {
             font-size: 2.5em;
@@ -224,8 +225,9 @@ class songRatingTable extends HTMLElement {
         for (let i = 0; i < songs.length; i++) {
             songCol.innerHTML +=
                 "<song-frame song=\"" + songs[i].song +
-                "\" cover=\"src/cover/" + songs[i].id +
-                ".jpg\" diff=\"" + songs[i].diff +
+                "\" cover=\"src/cover/" + songs[i].id + ".jpg" +
+                "\" href=\"https://wiki.arcaea.cn/index.php/" + songs[i].song +
+                "\" diff=\"" + songs[i].diff +
                 "\" rating=\"" + songs[i].rating +
                 "\" ptt=\"" + songs[i].ptt +
                 "\" tap=\"" + songs[i].tap +
